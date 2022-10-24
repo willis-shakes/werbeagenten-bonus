@@ -241,10 +241,10 @@ const nachricht = document.getElementById("nachricht");
 const telefon = document.getElementById("telefon");
 const termin = document.getElementById("termin");
 
-const nameReg = /^[a-zA-Z\s\.\-\_äöüß]{2,}$/i;
-const nachrichtReg = /^[0-9]{5}$/;
+const nameCheck = /^[a-zA-Z\s\.\-\_äöüß]{2,}$/i;
+const nachrichtCheck = /^[0-9]{5}$/;
 const telfonCheck = /^[/+\-\s0-9]{3,20}$/g;
-const emailReg =
+const emailCheck =
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 function toggleCallback() {}

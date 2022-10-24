@@ -1,0 +1,40 @@
+@use "../abstracts" as *;
+
+:root {
+  --header-height: 5rem;
+  --container-width: 84.75rem;
+
+  --clr-light: hsl(0, 0%, 100%);
+  --clr-grey-light: hsl(0, 0%, 44%);
+  --clr-grey: hsl(0, 0%, 15%);
+  --clr-grey-dark: hsl(60, 4%, 11%);
+  --clr-dark: hsl(0, 0%, 0%);
+  --clr-primary: hsl(353, 75%, 51%);
+  --clr-danger: hsl(4, 90%, 58%);
+  --clr-success: hsl(122, 57%, 69%);
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semi-bold: 600;
+
+  // --fst-normal: normal;
+  // --fs-s: 18px;
+  // --fs-m: 20px;
+  // --fs-l: 23px;
+  // --lh-none: 0px;
+  // --lh-s: 28px;
+  // --lh-m: 33px;
+
+  --spacing: 0.04em;
+
+  --transition-1: all 0.3s ease-out;
+  --transition-2: all 0.2s ease-out;
+
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Montserrat", sans-serif;
+
+  --radius-s: 0.625rem;
+  --radius-m: 1.75rem;
+
+  --z-fixed: 100;
+}

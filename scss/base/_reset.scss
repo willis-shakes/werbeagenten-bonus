@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+}
+
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd,
+hr {
+  margin: 0;
+  padding: 0;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  text-rendering: optimizeSpeed;
+  overflow-x: hidden;
+  overflow: -moz-hidden-unscrollable;
+  overflow-x: clip;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+p:not([class]),
+ul:not([class]),
+li:not([class]) {
+  max-width: 60ch;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  text-transform: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

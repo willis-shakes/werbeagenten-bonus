@@ -1,0 +1,52 @@
+@use "../abstracts" as *;
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: var(--clr-dark);
+}
+
+.nav {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    gap: 0.875rem;
+    font-family: var(--ff-secondary);
+    font-weight: var(--fw-semi-bold);
+    line-height: 1.875rem;
+    text-transform: uppercase;
+    letter-spacing: var(--spacing);
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+  &__login {
+    transition: var(--transition-1);
+    &:hover,
+    &:focus {
+      opacity: 0.6;
+    }
+  }
+}
+
+#navMenu svg {
+  z-index: -1;
+  overflow: visible;
+  transition: all 1s ease-in-out;
+  g {
+    overflow: visible;
+  }
+  line {
+    transition: var(--transition-1);
+  }
+}

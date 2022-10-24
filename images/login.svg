@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <clipPath id="clip-path">
+      <circle id="Ellipse_1" data-name="Ellipse 1" cx="15" cy="15" r="15" transform="translate(425.25 242)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Gruppe_67" data-name="Gruppe 67" transform="translate(-425.25 -242)">
+    <g id="Gruppe_60" data-name="Gruppe 60">
+      <path id="Pfad_110" data-name="Pfad 110" d="M440.25,244a13,13,0,1,1-13,13,13.015,13.015,0,0,1,13-13m0-2a15,15,0,1,0,15,15,15,15,0,0,0-15-15Z" fill="#fff"/>
+    </g>
+    <g id="Gruppe_61" data-name="Gruppe 61">
+      <path id="Pfad_111" data-name="Pfad 111" d="M440.5,249a3.5,3.5,0,1,1-3.5,3.5,3.5,3.5,0,0,1,3.5-3.5m0-2a5.5,5.5,0,1,0,5.5,5.5,5.5,5.5,0,0,0-5.5-5.5Z" fill="#fff"/>
+    </g>
+    <g id="Gruppe_64" data-name="Gruppe 64">
+      <g id="Gruppe_63" data-name="Gruppe 63" clip-path="url(#clip-path)">
+        <g id="Gruppe_62" data-name="Gruppe 62">
+          <path id="Pfad_112" data-name="Pfad 112" d="M444.25,261a5.5,5.5,0,0,1,0,11h-8a5.5,5.5,0,0,1,0-11h8m0-2h-8a7.522,7.522,0,0,0-7.5,7.5h0a7.522,7.522,0,0,0,7.5,7.5h8a7.522,7.522,0,0,0,7.5-7.5h0a7.522,7.522,0,0,0-7.5-7.5Z" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

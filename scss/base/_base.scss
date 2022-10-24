@@ -1,0 +1,37 @@
+@use "../abstracts" as *;
+
+html {
+  scroll-padding-top: var(--header-height, 5.625rem);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--ff-primary), sans-serif;
+  font-size: 1rem;
+  color: var(--clr-light);
+  line-height: 1.5;
+  background-color: var(--clr-dark);
+}
+
+main {
+  margin-top: var(--header-height);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--ff-secondary);
+  color: var(--clr-light);
+  font-weight: var(--fw-semi-bold);
+  line-height: 1.15;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

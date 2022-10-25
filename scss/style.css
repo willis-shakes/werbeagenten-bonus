@@ -156,6 +156,10 @@ input:-webkit-autofill {
   -webkit-text-fill-color: var(--clr-light) !important;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 button {
   border: none;
   cursor: pointer;
@@ -642,7 +646,9 @@ a:hover, a:focus {
 }
 .form label input[type=text],
 .form label input[type=email],
+.form label input[type=date],
 .form label textarea {
+  display: inline-block;
   width: 100%;
   line-height: 1.75;
   background-color: var(--clr-grey) !important;
@@ -650,14 +656,15 @@ a:hover, a:focus {
   border: var(--clr-grey-light) solid 0.125rem;
   padding: 0.25rem 0.5rem;
 }
-.form label input[type=text]::-moz-placeholder, .form label input[type=email]::-moz-placeholder, .form label textarea::-moz-placeholder {
+.form label input[type=text]::-moz-placeholder, .form label input[type=email]::-moz-placeholder, .form label input[type=date]::-moz-placeholder, .form label textarea::-moz-placeholder {
   color: var(--clr-light);
 }
-.form label input[type=text]:-ms-input-placeholder, .form label input[type=email]:-ms-input-placeholder, .form label textarea:-ms-input-placeholder {
+.form label input[type=text]:-ms-input-placeholder, .form label input[type=email]:-ms-input-placeholder, .form label input[type=date]:-ms-input-placeholder, .form label textarea:-ms-input-placeholder {
   color: var(--clr-light);
 }
 .form label input[type=text]::placeholder,
 .form label input[type=email]::placeholder,
+.form label input[type=date]::placeholder,
 .form label textarea::placeholder {
   color: var(--clr-light);
 }

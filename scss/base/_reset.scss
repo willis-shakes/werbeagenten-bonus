@@ -92,6 +92,9 @@ input:-webkit-autofill:active {
 input:-webkit-autofill {
   -webkit-text-fill-color: var(--clr-light) !important;
 }
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
 
 button {
   border: none;

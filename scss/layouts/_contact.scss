@@ -233,7 +233,9 @@
     display: block;
     input[type="text"],
     input[type="email"],
+    input[type="date"],
     textarea {
+      display: inline-block;
       width: 100%;
       line-height: 1.75;
       background-color: var(--clr-grey) !important;

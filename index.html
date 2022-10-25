@@ -189,17 +189,10 @@
                       schreib mir.
                     </legend>
                     <label aria-hidden="true" for="person">
-                      <input
-                        required
-                        id="person"
-                        name="person"
-                        type="hidden"
-                        value=""
-                      />
+                      <input id="person" name="person" type="hidden" value="" />
                     </label>
                     <label class="infos__email" for="email">
                       <input
-                        required
                         id="email"
                         name="email"
                         type="email"
@@ -209,7 +202,6 @@
                     </label>
                     <label class="infos__name" for="name">
                       <input
-                        required
                         id="name"
                         name="name"
                         type="text"
@@ -219,7 +211,6 @@
                     </label>
                     <label class="infos__nachricht" for="nachricht">
                       <textarea
-                        required
                         name="nachricht"
                         id="nachricht"
                         cols="30"
@@ -234,7 +225,7 @@
                 <div class="form__col">
                   <fieldset class="callback">
                     <legend>Oder soll ich Dich anrufen?</legend>
-                    <div class="callback__auswahl">
+                    <div id="callbackChoices" class="callback__auswahl">
                       <label class="callback__auswahl-jup" for="jup">
                         <input
                           checked
@@ -273,7 +264,7 @@
                         <input
                           id="termin"
                           name="termin"
-                          type="text"
+                          type="date"
                           placeholder="Bevorzugter Termin?"
                         />
                       </label>
@@ -284,7 +275,12 @@
                       </p>
                     </div>
                   </fieldset>
-                  <input class="form__btn" type="submit" value="Abschicken" />
+                  <input
+                    id="formBtn"
+                    class="form__btn"
+                    type="submit"
+                    value="Abschicken"
+                  />
                   <p class="form__richtlinien">
                     Durch das Abschicken stimmst du unseren Nutzungsbedingungen
                     zu. In unserer Datenrichtlinie erfährst du, wie wir deine

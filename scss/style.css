@@ -145,6 +145,17 @@ select {
   color: inherit;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--clr-grey) inset !important;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--clr-light) !important;
+}
+
 button {
   border: none;
   cursor: pointer;
@@ -634,7 +645,7 @@ a:hover, a:focus {
 .form label textarea {
   width: 100%;
   line-height: 1.75;
-  background-color: transparent !important;
+  background-color: var(--clr-grey) !important;
   color: var(--clr-light) !important;
   border: var(--clr-grey-light) solid 0.125rem;
   padding: 0.25rem 0.5rem;

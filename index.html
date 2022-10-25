@@ -181,7 +181,7 @@
                 </div>
               </div>
 
-              <form action="">
+              <form id="formular" action="">
                 <div class="form__col">
                   <fieldset class="infos">
                     <legend>
@@ -248,6 +248,7 @@
                       </label>
                       <label class="callback__auswahl-nope" for="nope">
                         <input
+                          checked
                           class="sr-only"
                           id="nope"
                           type="radio"
@@ -257,7 +258,7 @@
                         <span>Nope</span>
                       </label>
                     </div>
-                    <div class="callback__option">
+                    <div id="callbackOption" class="callback__option v-hidden">
                       <label class="callback__telefon" for="telefon">
                         <input
                           id="telefon"

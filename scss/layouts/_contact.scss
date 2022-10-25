@@ -236,7 +236,8 @@
     textarea {
       width: 100%;
       line-height: 1.75;
-      background-color: transparent;
+      background-color: transparent !important;
+      color: var(--clr-light) !important;
       border: var(--clr-grey-light) solid 0.125rem;
       padding: 0.25rem 0.5rem;
       &::placeholder {

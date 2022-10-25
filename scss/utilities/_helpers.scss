@@ -58,9 +58,14 @@
 
 .active {
   opacity: 1 !important;
-  // &:hover,
-  // &:focus {
-  //   opacity: 1;
-  //   text-decoration: none;
-  // }
+}
+
+.error-message {
+  margin-bottom: 0.75rem;
+  margin-top: 0.5rem;
+  font-family: var(--ff-primary);
+  font-size: 0.75rem;
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  color: var(--clr-danger);
 }

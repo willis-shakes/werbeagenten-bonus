@@ -228,25 +228,65 @@ goBack();
 
 function setPersonInput() {
   const personInput = document.getElementById("person");
-
   personInput.value = getChoice("choiceName");
 }
 
 // ################### Form Validation ###################
 
-const callbacks = document.querySelectorAll("input[name='callback']");
-const email = document.getElementById("email");
-const name = document.getElementById("name");
-const nachricht = document.getElementById("nachricht");
-const telefon = document.getElementById("telefon");
-const termin = document.getElementById("termin");
+function insertAfter(message, field) {
+  field.parentNode.insertBefore(message, field.nextSibling);
+}
 
-const nameCheck = /^[a-zA-Z\s\.\-\_äöüß]{2,}$/i;
-const nachrichtCheck = /^[0-9]{5}$/;
-const telfonCheck = /^[/+\-\s0-9]{3,20}$/g;
-const emailCheck =
-  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+function createErrMsg(id, name) {
+  let errMsg = document.createElement("p");
+  errMsg.classList.add("error-message");
+  errMsg.innerText = name + " ist fehlerhaft ausgefüllt.";
 
-function toggleCallback() {}
+  let errField = document.getElementById(id);
 
-console.log(choiceNames);
+  insertAfter(errMsg, errField);
+  errField.focus();
+}
+
+const callbackOption = document.getElementById("callbackOption");
+const callbacks = document
+  .querySelectorAll("input[name='callback']")
+  .forEach((callback) => {
+    callback.addEventListener("change", function () {
+      if (callback.checked) {
+        // const callback = callback.id;
+      }
+      callbackOption.classList.toggle("v-hidden");
+    });
+  });
+
+document.getElementById("formular").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const person = document.getElementById("person").value;
+  const email = document.getElementById("email").value;
+  const name = document.getElementById("name").value;
+  const nachricht = document.getElementById("nachricht").value;
+  const telefon = document.getElementById("telefon").value;
+  const termin = document.getElementById("termin").value;
+
+  // console.log(callbacks);
+  // console.log(person);
+  // console.log(name);
+  // console.log(nachricht);
+  // console.log(termin);
+  // console.log(person);
+  // console.log(choiceNames); ####################################################################
+
+  const nameCheck = /^[a-zA-Z\s\.\-\_äöüß]{2,}$/i;
+  const nachrichtCheck = /^[0-9]{5}$/;
+  const telfonCheck = /^[/+\-\s0-9]{3,20}$/g;
+  const emailCheck =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+  if (!nameCheck.test(name)) {
+    createErrMsg("name", "Vollständiger Name");
+  }
+
+  function toggleCallback() {}
+});

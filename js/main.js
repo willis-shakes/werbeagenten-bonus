@@ -1,45 +1,3 @@
-// /*=============== SHOW MENU ===============*/
-
-// const navMenu = document.getElementById("nav-menu");
-// const navToggle = document.getElementById("nav-toggle");
-// const navClose = document.getElementById("nav-close");
-
-// if (navToggle) {
-//   navToggle.addEventListener("click", () => {
-//     navMenu.classList.add("show-menu");
-//   });
-// }
-
-// if (navClose) {
-//   navClose.addEventListener("click", () => {
-//     navMenu.classList.remove("show-menu");
-//   });
-// }
-
-// /*=============== REMOVE MENU MOBILE ===============*/
-
-// const navLink = document.querySelectorAll(".nav__link");
-
-// function linkAction() {
-//   const navMenu = document.getElementById("nav-menu");
-//   navMenu.classList.remove("show-menu");
-// }
-
-// navLink.forEach((n) => n.addEventListener("click", linkAction));
-
-// /*=============== CHANGE BACKGROUND HEADER ===============*/
-
-// function scrollHeader() {
-//   const header = document.getElementById("header");
-//   const headerWidth = window.innerWidth;
-
-//   if (this.scrollY >= 20 && headerWidth < 960)
-//     header.classList.add("scroll-header");
-//   else header.classList.remove("scroll-header");
-// }
-
-// window.addEventListener("scroll", scrollHeader);
-
 // ############ Menü Animation ###############
 
 const navMenu = document.getElementById("navMenu");
@@ -90,8 +48,6 @@ let choiceNames = [];
 const weiterBtn = document.getElementById("weiterBtn");
 const formContainer = document.getElementById("formContainer");
 const choiceContainer = document.getElementById("choiceContainer");
-
-console.log(choices);
 
 function goToContact() {
   if (!checkChoice()) {
@@ -257,6 +213,8 @@ function toggleCallbackOption() {
   });
 }
 
+toggleCallbackOption();
+
 function validateTermin(termin) {
   const terminCheck = /^([2]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/;
 
@@ -266,7 +224,6 @@ function validateTermin(termin) {
 
   const date = new Date(termin);
   const dateNow = new Date();
-
   const terminTime = date.getTime();
   const currentTime = dateNow.getTime();
 
@@ -281,17 +238,21 @@ function validateTermin(termin) {
   return date.toISOString().startsWith(termin);
 }
 
-toggleCallbackOption();
+function errorCheck() {
+  const errorList = formContainer.querySelectorAll(".error-message");
+
+  return !errorList.length;
+}
 
 function validateForm() {
   document.querySelectorAll(".error-message").forEach((err) => err.remove());
 
-  const person = document.getElementById("person").value;
-  const email = document.getElementById("email").value;
-  const name = document.getElementById("name").value;
-  const nachricht = document.getElementById("nachricht").value;
-  const telefon = document.getElementById("telefon").value;
-  const termin = document.getElementById("termin").value;
+  const person = document.getElementById("person").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const name = document.getElementById("name").value.trim();
+  const nachricht = document.getElementById("nachricht").value.trim();
+  const telefon = document.getElementById("telefon").value.trim();
+  const termin = document.getElementById("termin").value.trim();
   let callback = "";
 
   document.querySelectorAll("input[name='callback']").forEach((item) => {
@@ -301,68 +262,48 @@ function validateForm() {
   });
 
   const nameCheck = /^[a-zA-Z\s\.\-\_äöüß]{2,}$/i;
-  const nachrichtCheck = /^[a-zA-Z\s\.\-\_äöüß()?!"]{5}$/;
   const telefonCheck = /^[/+\-\s0-9]{3,20}$/g;
   const emailCheck =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-  const errorArray = [];
-
   if (!choiceNames.includes(person)) {
     createErrMsg("formBtn", "Es ist ein Fehler. augetreten. Versuch's nochmal");
-    errorArray.push("person");
   }
   if (!email) {
     createErrMsg("email", "Dieses Feld darf nicht leer sein.");
-    errorArray.push("email");
   } else if (!emailCheck.test(email)) {
     createErrMsg("email", "Bitte gib eine gültige Email ein");
-    errorArray.push("email");
   }
   if (!name) {
     createErrMsg("name", "Dieses Feld darf nicht leer sein.");
-    errorArray.push("name");
   } else if (!nameCheck.test(name)) {
     createErrMsg("name", "Bitte gib deinen vollständiger Namen ein");
-    errorArray.push("name");
   }
   if (!nachricht) {
     createErrMsg("nachricht", "Dieses Feld darf nicht leer sein.");
-    errorArray.push("nachricht");
   } else if (nachricht.length > 1000) {
     createErrMsg(
       "nachricht",
       "Dieses Feld darf nicht mehr als 1000 Zeichen haben."
     );
-    errorArray.push("nachricht");
   }
   if (!callback) {
     createErrMsg("callbackChoices", "Bitte wählen Sie eine Option aus.");
-    errorArray.push("callback");
   } else if (callback === "jup") {
     if (!telefonCheck.test(telefon)) {
       createErrMsg("telefon", "Bitte gib eine korrekte Telefonnummer ein.");
-      errorArray.push("telefon");
     }
     if (!validateTermin(termin)) {
       createErrMsg("termin", "Bitte gib ein korrektes Datum ein.");
-      errorArray.push("termin");
     }
   }
-
-  if (!errorArray.length) {
-    console.log(callback);
-    console.log(person);
-    console.log(name);
-    console.log(nachricht.length);
-    console.log(termin);
-    console.log(nachricht);
-    console.log(choiceNames);
-  }
-  console.log(errorArray);
 }
 
 document.getElementById("formular").addEventListener("submit", (e) => {
-  e.preventDefault();
   validateForm();
+  if (errorCheck()) {
+    document.getElementById("formular").submit();
+  } else {
+    e.preventDefault();
+  }
 });

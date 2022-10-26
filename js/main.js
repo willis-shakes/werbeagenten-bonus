@@ -244,6 +244,14 @@ function errorCheck() {
   return !errorList.length;
 }
 
+function emptyInputs() {
+  document.getElementById("termin").value;
+  document.getElementById("termin").value;
+  document.getElementById("termin").value;
+  document.getElementById("termin").value;
+  document.getElementById("termin").value;
+}
+
 function validateForm() {
   document.querySelectorAll(".error-message").forEach((err) => err.remove());
 
@@ -302,8 +310,39 @@ function validateForm() {
 document.getElementById("formular").addEventListener("submit", (e) => {
   validateForm();
   if (errorCheck()) {
-    document.getElementById("formular").submit();
+    e.preventDefault();
+    const formular = document.getElementById("formular");
+    const preFormData = new FormData(formular);
+    const formData = new URLSearchParams(preFormData);
+    console.log([...formData]);
+
+    fetch("form_mail.php", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        showformMessage(data.message, data.error);
+      })
+      .catch((err) => {
+        console.log("Ein Fehler ist aufgetreten: " + err);
+      });
   } else {
     e.preventDefault();
   }
 });
+
+const formMessage = document.getElementById("formMessage");
+const formMessageText = document.getElementById("formMessageText");
+
+function showformMessage(msg, err) {
+  const messageColor = err ? "error" : "success";
+
+  formMessageText.classList.add(messageColor);
+  formMessage.classList.add("show");
+  formMessageText.innerText = msg;
+  formMessage.setAttribute("aria-hidden", "false");
+}

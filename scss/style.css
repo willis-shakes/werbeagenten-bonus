@@ -326,24 +326,6 @@ a:hover, a:focus {
   visibility: hidden;
 }
 
-.button {
-  display: inline-flex;
-  position: relative;
-  background-color: var(--clr-primary);
-  color: var(--clr-light);
-  padding: 0.5rem 2rem;
-  font-size: var(--fs-0);
-  font-weight: var(--fw-bold);
-  border-radius: var(--radius-m);
-  align-items: center;
-  transition: 0.3s;
-}
-.button:hover, .button:focus {
-  background-color: var(--clr-dark);
-  color: var(--clr-light);
-  text-decoration: none;
-}
-
 .header {
   position: fixed;
   width: 100%;
@@ -391,10 +373,6 @@ a:hover, a:focus {
 }
 #navMenu svg line {
   transition: var(--transition-1);
-}
-
-.bg-blob {
-  background: url(../images/kreuze.png) no-repeat 40%;
 }
 
 .contact {
@@ -752,6 +730,42 @@ a:hover, a:focus {
   font-family: var(--ff-secondary);
   font-size: 1rem;
   font-weight: var(--fw-semi-bold);
+}
+.form__message {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  min-height: 0;
+}
+.form__message-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--clr-dark);
+}
+.form__message .success {
+  background-color: var(--clr-success);
+}
+.form__message .error {
+  background-color: var(--clr-error);
+}
+.form .show {
+  margin-top: 1rem;
+  opacity: 1;
+  min-height: 6rem;
+}
+@media only screen and (min-width: 40em) {
+  .form .show {
+    min-height: 5.5rem;
+  }
 }
 .form__btn {
   margin-top: 1rem;

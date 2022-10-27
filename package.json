@@ -1,0 +1,19 @@
+{
+  "name": "werbeagenten-bonus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "sass-dev": "sass --watch --update --style=expanded scss:css",
+    "sass-prod": "sass --no-source-map --style=compressed scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willis-shakes/werbeagenten-bonus.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.55.0"
+  }
+}

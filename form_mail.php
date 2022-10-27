@@ -33,7 +33,7 @@ if (!empty($_POST["email"]) && !empty($_POST["name"]) && $_POST["csrf_token"] ==
         $nachricht = bereinige($_POST['nachricht']);
         
         $betreff = "Formularanfrage " . $name;
-        $empfaenger_email = "williamwillislindner@gmail.com";
+        $empfaenger_email = "testmail@william-lindner.de";
         $inhalt = "";
 
         $inhalt .= "Absender: " . $name . "\r\n";
@@ -43,8 +43,8 @@ if (!empty($_POST["email"]) && !empty($_POST["name"]) && $_POST["csrf_token"] ==
         $inhalt .= "Rückruf:  " . $callback . "\r\n";
         
         $header = array(
-            'From' => 'william@mail.com',
-            'Reply-To' => 'william@mail.com',
+            'From' => 'test@mail.com',
+            'Reply-To' => 'test@mail.com',
             'Content-Type' => 'text/plain',
             'charset' => 'utf-8'
         );

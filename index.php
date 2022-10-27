@@ -2,16 +2,9 @@
 
 session_start();
 
-// if(isset($_SESSION['meldung'])) {
-// 	$meldung = $_SESSION['meldung'];
-// 	unset($_SESSION['meldung']);
-// }
-
-
 if(!isset($_SESSION["token"])) {
 	$_SESSION["token"] = bin2hex(openssl_random_pseudo_bytes(32));
 }
-
 
 ?>
 
@@ -22,7 +15,7 @@ if(!isset($_SESSION["token"])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="scss/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
     <title>Werbeagenten Projekt</title>
 </head>
@@ -43,7 +36,6 @@ if(!isset($_SESSION["token"])) {
                             stroke="#fff" stroke-width="3" />
                     </g>
                 </svg>
-
                 Menü
             </a>
             <a class="nav__link nav__login" href="#">

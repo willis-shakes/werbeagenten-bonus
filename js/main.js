@@ -1,4 +1,4 @@
-// ############ Menü Animation ###############
+// ############ Menu Animation ###############
 
 const navMenu = document.getElementById("navMenu");
 const line1 = document.getElementById("line1");
@@ -55,6 +55,7 @@ function goToContact() {
   }
   choiceContainer.classList.add("hide");
   formContainer.classList.remove("hide");
+  formContainer.scrollIntoView();
 }
 
 choices.forEach((choice) => {
@@ -163,11 +164,21 @@ function goBack() {
   zurueckBtn.addEventListener("click", function () {
     formContainer.classList.add("hide");
     choiceContainer.classList.remove("hide");
+    removeformMessage();
+
+    jupField.checked = false;
+    nopeField.checked = true;
+
+    if (!callbackOption.classList.contains("v-hidden")) {
+      callbackOption.classList.add("v-hidden");
+    }
+
     if (formChoiceImage.firstChild) {
       formChoiceImage.removeChild(formChoiceImage.children[0]);
     }
     const lastSelected = document.getElementById(getChoice("choiceID"));
     lastSelected.focus();
+    choiceContainer.scrollIntoView();
   });
 }
 
@@ -179,15 +190,6 @@ function setPersonInput() {
 }
 
 // ################### Form Validation ###################
-
-function escapeHtml(input) {
-  return input
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
 
 function insertAfter(message, field) {
   field.parentNode.insertBefore(message, field.nextSibling);
@@ -203,9 +205,9 @@ function createErrMsg(id, msg) {
   errField.focus();
 }
 
-function toggleCallbackOption() {
-  const callbackOption = document.getElementById("callbackOption");
+const callbackOption = document.getElementById("callbackOption");
 
+function toggleCallbackOption() {
   document.querySelectorAll("input[name='callback']").forEach((item) => {
     item.addEventListener("change", function () {
       callbackOption.classList.toggle("v-hidden");
@@ -244,23 +246,39 @@ function errorCheck() {
   return !errorList.length;
 }
 
-function emptyInputs() {
-  document.getElementById("termin").value;
-  document.getElementById("termin").value;
-  document.getElementById("termin").value;
-  document.getElementById("termin").value;
-  document.getElementById("termin").value;
+const personField = document.getElementById("person");
+const emailField = document.getElementById("email");
+const nameField = document.getElementById("name");
+const nachrichtField = document.getElementById("nachricht");
+const telefonField = document.getElementById("telefon");
+const terminField = document.getElementById("termin");
+const jupField = document.getElementById("jup");
+const nopeField = document.getElementById("nope");
+
+const formMessage = document.getElementById("formMessage");
+const formMessageText = document.getElementById("formMessageText");
+
+function removeformMessage() {
+  formMessageText.innerText = "";
+  if (formMessageText.classList.contains("success")) {
+    formMessageText.classList.remove("success");
+  }
+  if (formMessageText.classList.contains("error")) {
+    formMessageText.classList.remove("error");
+  }
 }
 
 function validateForm() {
   document.querySelectorAll(".error-message").forEach((err) => err.remove());
+  removeformMessage();
 
-  const person = document.getElementById("person").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const name = document.getElementById("name").value.trim();
-  const nachricht = document.getElementById("nachricht").value.trim();
-  const telefon = document.getElementById("telefon").value.trim();
-  const termin = document.getElementById("termin").value.trim();
+  const person = document.getElementById("person").value;
+  const email = document.getElementById("email").value;
+  const name = document.getElementById("name").value;
+  const nachricht = document.getElementById("nachricht").value;
+  const telefon = document.getElementById("telefon").value;
+  const termin = document.getElementById("termin").value;
+
   let callback = "";
 
   document.querySelectorAll("input[name='callback']").forEach((item) => {
@@ -307,6 +325,8 @@ function validateForm() {
   }
 }
 
+// ################### Send FormData ###################
+
 document.getElementById("formular").addEventListener("submit", (e) => {
   validateForm();
   if (errorCheck()) {
@@ -314,7 +334,6 @@ document.getElementById("formular").addEventListener("submit", (e) => {
     const formular = document.getElementById("formular");
     const preFormData = new FormData(formular);
     const formData = new URLSearchParams(preFormData);
-    console.log([...formData]);
 
     fetch("form_mail.php", {
       method: "POST",
@@ -324,7 +343,6 @@ document.getElementById("formular").addEventListener("submit", (e) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         showformMessage(data.message, data.error);
       })
       .catch((err) => {
@@ -335,14 +353,24 @@ document.getElementById("formular").addEventListener("submit", (e) => {
   }
 });
 
-const formMessage = document.getElementById("formMessage");
-const formMessageText = document.getElementById("formMessageText");
+// ################### Show Form Message ###################
 
 function showformMessage(msg, err) {
   const messageColor = err ? "error" : "success";
+  if (!err) {
+    resetInputs();
+  }
 
   formMessageText.classList.add(messageColor);
   formMessage.classList.add("show");
   formMessageText.innerText = msg;
   formMessage.setAttribute("aria-hidden", "false");
+}
+
+function resetInputs() {
+  nachrichtField.value = "";
+  emailField.value = "";
+  nameField.value = "";
+  telefonField.value = "";
+  terminField.value = "";
 }
